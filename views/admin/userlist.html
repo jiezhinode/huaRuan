@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+
+
+    <link rel="stylesheet" href="/css/ace.min.css" />
+    <link rel="stylesheet" href="/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="/css/ace-skins.min.css" />
+
+    <script src="/js/ace-extra.min.js"></script>
+
+</head>
+
+<body>
+<!--头部-->
+{{include './public/header.html'}}
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="main-container-inner">
+        <div class="sidebar" id="sidebar">
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+            </script>
+
+
+
+            <!--导航栏-->
+            {{include './public/nav.html'}}
+
+            <div class="sidebar-collapse" id="sidebar-collapse">
+                <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+            </div>
+
+            <script type="text/javascript">
+                try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+            </script>
+        </div>
+
+        <div class="main-content">
+
+
+            <!--搜索栏-->
+            <!--<div class="breadcrumbs" id="breadcrumbs">-->
+            <!--<script type="text/javascript">-->
+            <!--try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}-->
+            <!--</script>-->
+
+
+
+            <!--<div class="nav-search" id="nav-search">-->
+            <!--<form class="form-search">-->
+            <!--<span class="input-icon">-->
+            <!--<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />-->
+            <!--<i class="icon-search nav-search-icon"></i>-->
+            <!--</span>-->
+            <!--</form>-->
+            <!--</div>&lt;!&ndash; #nav-search &ndash;&gt;-->
+            <!--</div>-->
+
+
+
+
+        </div><!-- /.main-content -->
+
+
+        <!--[if !IE]> -->
+
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='/js/jquery-2.0.3.min.js'>"+"<"+"script>");
+        </script>
+
+        <!-- <![endif]-->
+
+        <!--[if IE]>
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='/js/jquery-1.10.2.min.js'>"+"<"+"script>");
+        </script>
+        <![endif]-->
+
+        <script type="text/javascript">
+            if("ontouchend" in document) document.write("<script src='/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
+        </script>
+        <script src="/js/bootstrap.min.js"></script>
+
+
+        <!-- ace scripts -->
+
+        <script src="/js/ace-elements.min.js"></script>
+        <script src="/js/ace.min.js"></script>
+
+
+
+</body>
+</html>
+
