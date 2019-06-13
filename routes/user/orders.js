@@ -1,7 +1,7 @@
 const router=require('koa-router')()
 
 router.get('/',async  (ctx)=>{
-    ctx.body = '订单信息'
+     ctx.render('user/orders')
 })
 
 

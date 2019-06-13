@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        .a{
+            width: 100%;
+            height: 600px;
+        }
+        .a li{
+            list-style-type: none;
+            float:left;
+            margin-right: 20px;
+            border: 1px solid gray;
+            height: 460px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        .a li img{width: 298px;height: 200px}
+
+        .b{margin-bottom: 100px}
+        .b li{
+            list-style-type: none;
+            float:left;
+            margin-right: 20px;
+            border: 1px solid gray;
+            height: 510px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        .b li img{width: 298px;height: 200px}
+
+        .tou{font-size: 20px;margin-left: 20px;}
+        .margin{
+            margin-left: 20px;
+            overflow: hidden; /*自动隐藏文字*/
+            text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+            white-space: nowrap;/*强制不换行*/
+            width: 20em;/*不允许出现半汉字截断*/
+
+        }
+        .ma{color: forestgreen;margin-left: 20px;font-size: 18px;}
+        .more{background-color:lawngreen;
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-left: 20px;
+            margin-right: 20px;
+            color: white;
+            float: left;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<!--The content below is only a placeholder and can be replaced.-->
+
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+<%- include('public/user/header.html')%>
+<%- include('public/user/asicl.html')%>
+</div>
+<div class="col-sm-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            搜索
+        </div>
+        <div class="panel-body">
+            <form role="form" class="form-inline">
+                <div class="form-group">
+                    <label for="name">名称</label>
+                    <input type="text" class="form-control" id="name" placeholder="请输入名称">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">开始搜索</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="text-align: center"> <h2>个人商品列表</h2></div>
+
+    <div class="footer">
+            <div class="a" >
+                <h2>未通过审核</h2>
+                {{each result val key}}
+                        {{if  val.status===false&&val.isDel===false}}
+                        <li><img src="{{val.img[0]}}" /><br><br><br><br>
+                            <p class="tou">{{val.goodsName}}</p>
+                            <div class="margin">{{val.goodsContent}}</div><br>
+                            <p class="ma"><sup>$ </sup> {{val.goodsPrice}} <sup> RMB </sup></p>
+                            <button type="submit" class="btn btn-primary " style="color: white"><a style="color: white;text-decoration:none" href="/user/goods/infomation/{{val._id}}" >查看详情</a></button>
+                            <button type="submit" class="btn btn-primary " style="color: white"><a style="color: white; text-decoration:none" href="/user/goods/edit/{{val._id}}" >修改商品信息</a></button>
+                            <button type="submit" class="btn btn-primary " style="color: white"><a style="color: white; text-decoration:none" href="/user/goods/edit/{{val._id}}" >提醒审核</a></button>
+                            <button type="submit" class="btn btn-primary " style="color: white"><a style="color: white; text-decoration:none" href="/user/goods/delete/{{val._id}}" >删除</a></button>
+                        </li>
+                        {{/if}}
+                {{/each}}
+             </div>
+
+             <div class="b">
+                    <h2>已上架</h2>
+                    {{each result val key}}
+                        {{if  val.status===true&&val.isDel===false}}
+                        <li><img src="{{val.img[0]}}" /><br><br><br><br>
+                            <p class="tou">{{val.goodsName}}</p>
+                            <div class="margin">{{val.goodsContent}}</div><br>
+                            <p class="ma"><sup>$ </sup> {{val.goodsPrice}} <sup> RMB </sup></p>
+                            <p class="more"><a href="/user/goods/infomation/{{val._id}}" >查看详情</a></p>
+                            <p class="more"><a href="/user/goods/edit/{{val._id}}" >修改商品信息</a></p>
+                            <p class="more"><a href="/user/goods/delete/{{val._id}}" >下架</a></p>
+                        </li>
+                        {{/if}}
+                    {{/each}}
+             </div>
+    </div>
+
+
+
+</div>
+</div>
+</div>
+</body>
+</html>

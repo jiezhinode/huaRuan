@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--The content below is only a placeholder and can be replaced.-->
+
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+<%- include('public/user/header.html')%>
+<%- include('public/user/asicl.html')%>
+</div>
+<div class="col-sm-10">
+
+    <div style="text-align: center"> <h2>用户信息</h2></div>
+
+
+    <form  action="/user/userInfo"  enctype="multipart/form-data" method="post">
+
+        <div class="form-group" style="width: 300px">
+            <label for="exampleInputName2">用户名</label>
+            <input type="text" class="form-control" id="exampleInputName1"   value="{{info.username}} "  disabled = "disabled">
+        </div>
+        <div class="form-group" style="width: 300px">
+            <label for="exampleInputName2">密码</label>
+            <input type="text" class="form-control" id="exampleInputName2" name="password" value="{{info.password}}"  disabled = "disabled">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputName2">头像</label>
+            <img  src="{{info.img}}"  style="width: 200px;height: 170px" />
+            <input type="file" name="pic" id="img"  disabled = "disabled" />
+        </div>
+        <button type="button" class="btn btn-primary"  onclick="sub(this)">修改信息</button>
+        <button type="submit" class="btn btn-primary" id="submit" style="display:none">提交修改</button>
+    </form>
+
+  <script>
+  function sub(th) {
+      var name = document.getElementById('exampleInputName1')
+      var password = document.getElementById('exampleInputName2')
+      var img =  document.getElementById('img')
+      var sub =  document.getElementById('submit')
+      password.disabled = ''
+      img.disabled = ''
+      sub.style.display = "block"
+      th.style.display = "none"
+  }
+  </script>
+</div>
+</div>
+</div>
+</body>
+</html>

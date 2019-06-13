@@ -4,9 +4,13 @@ const Koa=require('koa'),
     path=require('path'),
     static = require('koa-static'),
     koaBody = require('koa-body'),
+    session = require('koa-session'),
+    mongoose = require('mongoose'),
+    config = require('./config/config'),
     //引入子模块
     admin=require('./routes/admin/index.js'),
     user=require('./routes/user/index.js')
+
 const app=new Koa()
 
 //配置koa-art-template 模板引擎
@@ -27,11 +31,38 @@ app.use(koaBody({
     }
 }))
 
+//配置session
+app.keys = ['some secret hurr'] //cookie签名
+const CONFIG = {
+    key: 'koa:sess',
+    maxAge: 86400000,
+    autoCommit: true,
+    overwrite: false,
+    httpOnly: true,
+    signed: true,
+    rolling: false,
+    renew: true,
+}
+app.use(session(CONFIG, app))
+
 //配置路由
 router.use('/admin',admin)
 router.use('/user',user)
 
-
 //启动路由
 app.use(router.routes()).use(router.allowedMethods())
-app.listen(8008)
+
+//连接数据库
+mongoose.Promise = require('bluebird');
+mongoose.connect(`${config.mongodbpath}`,{ useNewUrlParser: true }).then(()=>{
+    console.log('数据库连接成功');
+    console.log('http://127.0.0.1:8008');
+    app.listen(8008)
+}).catch((err)=>{
+    console.log('数据库连接失败');
+})
+
+
+
+
+
